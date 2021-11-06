@@ -5,7 +5,9 @@ export default function Dashboard() {
     return (
         <div>
             <h1>Dashboard</h1>
-            Click <Link to="/wordprocessing">here</Link> to go to word processing page.
+            <Link to="/login">Login</Link><br></br>
+            <Link to="/signup">Sign Up</Link><br></br>
+            <Link to="/wordprocessing">Word Processing Page</Link>
         </div>
     )
 }

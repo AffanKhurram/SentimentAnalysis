@@ -18,11 +18,12 @@ export default function Login() {
             setError("")
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
-        } catch {
+        } catch(error) {
+            console.log('test')
             console.log(error)
             setError("Failed to sign in")
         }
-
+        
         setLoading(false)
     }
 
@@ -49,6 +50,9 @@ export default function Login() {
             </Card>
             <div className="w-100 text-center mt-2">
                 Need an account? <Link to="/signup">Sign Up</Link>
+            </div>
+            <div className="w-100 text-center mt-2">
+                Go back to <Link to="/">dashboard</Link>
             </div>
         </>
     )
