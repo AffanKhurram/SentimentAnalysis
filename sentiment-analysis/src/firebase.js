@@ -1,3 +1,12 @@
+/**
+ * Manages the databse that we use to store our users
+ * Exports auth, which is in charge of siging the user in and general authentication
+ * 
+ * 1.0.0
+ * 11/3/21
+ */
+
+
 import firebase from "firebase/compat/app"
 import "firebase/compat/auth"
 import "firebase/firestore"

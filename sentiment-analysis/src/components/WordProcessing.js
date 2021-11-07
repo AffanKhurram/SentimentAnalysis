@@ -1,3 +1,12 @@
+/**
+ * The main sentiment analysis for our project
+ * Gives user a text box to enter text into and then analyzes it
+ * TODO: calculate analyze score
+ * 
+ * 0.5.0
+ * 11/3/21
+ */
+
 import Button from '@restart/ui/esm/Button'
 import React from 'react'
 import { Card, Form } from 'react-bootstrap'

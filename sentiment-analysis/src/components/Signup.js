@@ -1,3 +1,15 @@
+/**
+ * Manages the registration page for our app
+ * Asks user for an email, password, and to verify password
+ * Then, use firebase auth token to register new user
+ * if user already exists then give error message
+ * otherwise register user and go to page1 (User page)
+ * 
+ * 1.0.0
+ * 11/3/21
+ */
+
+
 import React, { useRef, useState, useEffect } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'

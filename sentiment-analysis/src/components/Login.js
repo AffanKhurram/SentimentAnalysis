@@ -1,3 +1,12 @@
+/**
+ * Login page for our app
+ * Shows an email and password box for the user to fill
+ * Once filled, it verifies using the firebase auth
+ * if successful, then go to page1 (User page)
+ * otherwise give an error message
+ */
+
+
 import React, { useEffect, useRef, useState } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'

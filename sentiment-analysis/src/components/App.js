@@ -1,3 +1,11 @@
+/**
+ * Main setup for the react app
+ * sets references to different pages so that we can use them throughout our project
+ * 
+ * 1.0.0
+ * 11/3/21
+ */
+
 import React from "react"
 import Signup from "./Signup"
 import Dashboard from "./Dashboard"
