@@ -1,7 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'
 import { Link } from 'react-router-dom'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../firebase'
+import { useNavigate } from 'react-router'
 
 export default function Signup() {
     const emailRef = useRef()
@@ -10,7 +13,18 @@ export default function Signup() {
     const { signup } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    const [user, load, err] = useAuthState(auth)
+    const navigate = useNavigate()
 
+
+    useEffect(function() {
+        if (load) {
+            return
+        }
+        if (user) {
+            navigate("/page1", [user, load])
+        }
+    }, [user, load])
 
     async function handleSubmit(e) {
         e.preventDefault()
