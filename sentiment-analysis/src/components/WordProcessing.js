@@ -1,11 +1,33 @@
+import Button from '@restart/ui/esm/Button'
 import React from 'react'
+import { Card, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 export default function WordProcessing() {
+    
+    async function analyze(e) {
+        console.log("analyze!")
+    }
+
     return (
-        <div>
-            <h1>Word Processing</h1>
-            Click <Link to="/">here</Link> to go back to main page.
-        </div>
+        <Card>
+            <Card.Body>
+                <Form onSubmit={analyze}>
+                    <Form.Group id='text' className="w-300">
+                        <Form.Label>Enter your text here</Form.Label>
+                        <Form.Control as="textarea" rows={5}></Form.Control>
+                    </Form.Group>
+                    <div className="text-center mt-2">
+                        <Button type="submit">
+                            Analyze
+                        </Button>
+                    </div>
+                </Form>
+            </Card.Body>
+            
+            <div className="w-100 text-center mt-2">
+                Go back to <Link to="/">dashboard</Link>
+            </div>
+        </Card>
     )
 }

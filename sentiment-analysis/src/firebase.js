@@ -15,6 +15,3 @@ const auth = app.auth()
 export {
     auth
 }
-
-// export const auth = app.auth()
-// export default app

@@ -3,7 +3,6 @@ import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'
 import { useAuthState } from "react-firebase-hooks/auth"
 import { Link, useNavigate } from 'react-router-dom'
-// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase';
 
 export default function Login() {
