@@ -2,7 +2,7 @@
  * Login page for our app
  * Shows an email and password box for the user to fill
  * Once filled, it verifies using the firebase auth
- * if successful, then go to page1 (User page)
+ * if successful, then go to loggedInDashboard (User page)
  * otherwise give an error message
  */
 
@@ -10,53 +10,34 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'
-import { useAuthState } from "react-firebase-hooks/auth"
 import { Link, useNavigate } from 'react-router-dom'
-import { auth } from '../firebase';
 
 export default function Login() {
     const emailRef = useRef()
     const passwordRef = useRef()
-    const { login } = useAuth()
+    const { currentUser, login } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    const [user, load, err] = useAuthState(auth)
     const navigate = useNavigate()
 
     useEffect(function() {
-        if (load) {
-            return
+        if (currentUser) {
+            navigate("/loggedindashboard", [currentUser])
         }
-        if (user) {
-            navigate("/page1", [user, load])
-        }
-    }, [user, load])
+    }, [currentUser])
     
 
     async function handleSubmit(e) {
         e.preventDefault()
-
-        // try {
-        //     setError("")
-        //     setLoading(true)
-        //     await login(emailRef.current.value, passwordRef.current.value)
-        //     const auth = getAuth()
-        //     await signInWithEmailAndPassword()
-        // } catch(error) {
-        //     console.log('test')
-        //     console.log(error)
-        //     setError("Failed to sign in")
-        // }
-        
-        // setLoading(false)
-        auth.signInWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
-            .then(function (res) {
-                console.log(res.user)
-            })
-            .catch(function (err) {
-                console.log(err)
-                setError("Failed to log-in")
-            })
+        try {
+            setLoading(true)
+            setError("")
+            await login(emailRef.current.value, passwordRef.current.value)
+        }
+        catch (e) {
+            console.log(e)
+            setError("Failed to login")
+        }
     }
 
     return (

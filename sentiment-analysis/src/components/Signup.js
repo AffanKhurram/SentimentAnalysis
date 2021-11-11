@@ -3,7 +3,7 @@
  * Asks user for an email, password, and to verify password
  * Then, use firebase auth token to register new user
  * if user already exists then give error message
- * otherwise register user and go to page1 (User page)
+ * otherwise register user and go to loggedindashboard (User page)
  * 
  * 1.0.0
  * 11/3/21
@@ -14,29 +14,23 @@ import React, { useRef, useState, useEffect } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'
 import { Link } from 'react-router-dom'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth } from '../firebase'
 import { useNavigate } from 'react-router'
 
 export default function Signup() {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
-    const { signup } = useAuth()
+    const { currentUser, signup } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    const [user, load, err] = useAuthState(auth)
     const navigate = useNavigate()
 
 
     useEffect(function() {
-        if (load) {
-            return
+        if (currentUser) {
+            navigate("/loggedindashboard", [currentUser])
         }
-        if (user) {
-            navigate("/page1", [user, load])
-        }
-    }, [user, load])
+    }, [currentUser])
 
     async function handleSubmit(e) {
         e.preventDefault()

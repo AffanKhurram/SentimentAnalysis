@@ -11,11 +11,11 @@ import Signup from "./Signup"
 import Dashboard from "./Dashboard"
 import Login from "./Login"
 import WordProcessing from "./WordProcessing"
-import Page1 from "./Page1"
+import LoggedInDashboard from "./LoggedInDashboard"
 import Page2 from "./Page2"
 import { Container } from 'react-bootstrap'
 import { AuthProvider } from "../contexts/AuthContext"
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
 
@@ -24,12 +24,13 @@ function App() {
       <div className="w-100" style={{ maxWidth: "400px" }}>
         <Router>
           <AuthProvider>
+            {/* These classes that are associated with each of the paths */}
             <Routes>
               <Route exact path="/" element={<Dashboard/>} />
               <Route path="/signup" element={<Signup/>} />
               <Route path="/login" element={<Login/>} />
               <Route path="/wordprocessing" element={<WordProcessing/>} />
-              <Route path="/page1" element={<Page1/>} />
+              <Route path="/loggedindashboard" element={<LoggedInDashboard/>} />
               <Route path="/page2" element={<Page2/>} />
 
             </Routes>

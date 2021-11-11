@@ -12,6 +12,7 @@ import { auth } from '../firebase.js'
 
 const AuthContext = React.createContext()
 
+// Function that everything uses to reference this context
 export function useAuth() { 
     return useContext(AuthContext)
 } 
@@ -21,24 +22,41 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
 
+    // Calls the signup function on the database
     function signup(email, password) {
         return auth.createUserWithEmailAndPassword(email, password)
+    }
+    // Calls the login function on the database
+    function login(email, password) {
+        return auth.signInWithEmailAndPassword(email, password)
+    }
+    // Signs out the current user
+    function signOut() {
+        if (currentUser) {
+            auth.signOut()
+        }
     }
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
+            console.log("auth state changed", user)
             setCurrentUser(user)
             setLoading(false)
+            console.log(currentUser)
         })
 
         return unsubscribe
     }, [])
 
+    // Functions and variables that other componenents will need access to
     const value = {
         currentUser,
-        signup
+        signup,
+        login,
+        signOut
     }
 
+    // Return the context, providing the values that everything should be able to use
     return (
         <AuthContext.Provider value={value}>
            { !loading && children } 
