@@ -19,10 +19,11 @@ export default function LoggedInDashboard() {
     const navigate = useNavigate()
     
     useEffect(function() {
+        console.log(currentUser)
         if (!currentUser) {
-            navigate("/")
+            navigate("/", [currentUser])
         }
-    }, [])
+    }, [currentUser])
 
     async function logout() {
         // signOut()
@@ -35,7 +36,6 @@ export default function LoggedInDashboard() {
 
         try {
             await signOut()
-            console.log(currentUser)
         }
         catch (e) {
             console.log(e)
