@@ -16,6 +16,7 @@ export default function LoggedInDashboard() {
     const { currentUser, signOut } = useAuth()
     const navigate = useNavigate()
     
+    // If user is not logged in and we are on this page, then go back to the logged out dashboard
     useEffect(function() {
         console.log(currentUser)
         if (!currentUser) {
@@ -23,15 +24,8 @@ export default function LoggedInDashboard() {
         }
     }, [currentUser, navigate])
 
+    // Logs out the current user 
     async function logout() {
-        // signOut()
-        //     .then(function (res) {
-        //         navigate("/")
-        //     })
-        //     .catch(function (err) {
-        //         console.log(err)
-        //     })           
-
         try {
             await signOut()
         }
@@ -40,7 +34,8 @@ export default function LoggedInDashboard() {
         }
     }
 
-
+    // This page's layout
+    // For now, just displays user's email and then a logout button
     return (
         <div>
             Logged in as

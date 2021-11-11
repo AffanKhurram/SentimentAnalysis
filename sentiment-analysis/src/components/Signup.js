@@ -25,26 +25,30 @@ export default function Signup() {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
-
+    // Redirect to the loggedin dashboard page after the user signs up
     useEffect(function() {
         if (currentUser) {
             navigate("/loggedindashboard", [currentUser])
         }
     }, [currentUser, navigate])
 
+    // Called when submit button is clicked
     async function handleSubmit(e) {
         e.preventDefault()
 
+        // Make sure that the user entered the same passwordf or both password and confirm password field
         if (passwordRef.current.value !== 
             passwordConfirmRef.current.value) {
             return setError('Passwords do not match')
         }
 
+        // Try to create a new user on the database with given information
         try {
             setError("")
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value)
         } catch {
+            // If something goes wrong, show error message
             console.log(error)
             setError("Failed to create an account")
         }
@@ -53,6 +57,7 @@ export default function Signup() {
 
     }
 
+    // Basic layout of the page in HTML
     return (
         <>
             <Card>

@@ -38,6 +38,7 @@ export function AuthProvider({ children }) {
     }
 
     useEffect(() => {
+        // Updates the state of the current user (whether or not they are signed in)
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user)
             setLoading(false)

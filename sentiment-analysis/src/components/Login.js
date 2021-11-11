@@ -20,26 +20,31 @@ export default function Login() {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
+    // Redirect to the loggedin dashboard after the user has successfully logged in
     useEffect(function() {
         if (currentUser) {
             navigate("/loggedindashboard", [currentUser])
         }
     }, [currentUser, navigate])
     
-
+    // Called when login button is pressed
     async function handleSubmit(e) {
         e.preventDefault()
+
+        // Try to log in the user with given username and password
         try {
             setLoading(true)
             setError("")
             await login(emailRef.current.value, passwordRef.current.value)
         }
         catch (e) {
+            // Show error message if something went wrong when trying to log in
             console.log(e)
             setError("Failed to login")
         }
     }
 
+    // HTML layout of page
     return (
         <>
             <Card>
