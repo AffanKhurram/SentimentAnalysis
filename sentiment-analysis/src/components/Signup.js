@@ -30,7 +30,7 @@ export default function Signup() {
         if (currentUser) {
             navigate("/loggedindashboard", [currentUser])
         }
-    }, [currentUser])
+    }, [currentUser, navigate])
 
     async function handleSubmit(e) {
         e.preventDefault()

@@ -9,8 +9,6 @@
 
 
 import React, { useEffect } from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth } from '../firebase'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../contexts/AuthContext'
 
@@ -23,7 +21,7 @@ export default function LoggedInDashboard() {
         if (!currentUser) {
             navigate("/", [currentUser])
         }
-    }, [currentUser])
+    }, [currentUser, navigate])
 
     async function logout() {
         // signOut()

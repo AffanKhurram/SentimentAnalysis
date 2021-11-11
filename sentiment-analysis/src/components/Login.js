@@ -24,7 +24,7 @@ export default function Login() {
         if (currentUser) {
             navigate("/loggedindashboard", [currentUser])
         }
-    }, [currentUser])
+    }, [currentUser, navigate])
     
 
     async function handleSubmit(e) {

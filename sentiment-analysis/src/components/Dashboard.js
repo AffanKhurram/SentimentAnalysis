@@ -22,7 +22,7 @@ export default function Dashboard() {
             if (currentUser) {
                 navigate("/loggedindashboard", [currentUser])
             }
-        }, [currentUser])
+        }, [currentUser, navigate])
 
 
     // Return the layout of the page
