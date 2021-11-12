@@ -18,7 +18,6 @@ export default function LoggedInDashboard() {
     
     // If user is not logged in and we are on this page, then go back to the logged out dashboard
     useEffect(function() {
-        console.log(currentUser)
         if (!currentUser) {
             navigate("/", [currentUser])
         }
