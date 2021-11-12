@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/SentimentAnalysis/static/js/main.7e782b00.chunk.js",
-    "main.js.map": "/SentimentAnalysis/static/js/main.7e782b00.chunk.js.map",
+    "main.js": "/SentimentAnalysis/static/js/main.85d7c4fa.chunk.js",
+    "main.js.map": "/SentimentAnalysis/static/js/main.85d7c4fa.chunk.js.map",
     "runtime-main.js": "/SentimentAnalysis/static/js/runtime-main.9cfdc832.js",
     "runtime-main.js.map": "/SentimentAnalysis/static/js/runtime-main.9cfdc832.js.map",
     "static/css/2.0a9ec390.chunk.css": "/SentimentAnalysis/static/css/2.0a9ec390.chunk.css",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.9cfdc832.js",
     "static/css/2.0a9ec390.chunk.css",
     "static/js/2.f7281cf0.chunk.js",
-    "static/js/main.7e782b00.chunk.js"
+    "static/js/main.85d7c4fa.chunk.js"
   ]
 }
