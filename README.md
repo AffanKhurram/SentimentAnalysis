@@ -8,7 +8,7 @@ git clone https://github.com/AffanKhurram/SentimentAnalysis.git
 go into downloaded repository
 
 ```console
-cd Sentiment-Analysis
+cd SentimentAnalysis
 ```
 go into sentiment-analysis folder
 ```console
