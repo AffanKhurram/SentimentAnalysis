@@ -31,7 +31,8 @@ export default function Dashboard() {
             <h1>Dashboard</h1>
             <Link to="/login">Login</Link><br></br>
             <Link to="/signup">Sign Up</Link><br></br>
-            <Link to="/wordprocessing">Word Processing Page</Link>
+            <Link to="/wordprocessing">Word Processing Page</Link><br></br>
+            <Link to="/Page2">Settings</Link>
         </div>
     )
 }
