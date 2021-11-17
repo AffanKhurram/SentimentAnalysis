@@ -22,4 +22,5 @@ npm install
 
 run the program
 ```console
-npm run start```
+npm run start
+```
