@@ -1,0 +1,25 @@
+* {
+    background-color: #232f3e;
+    color: #FFFFFF;
+}
+
+.header {
+    position: relative;
+    font-family: Arvo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 178px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.Button {
+    background-color: #ffffff;
+    font-family: Arvo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 74px;
+    text-align: center;
+}
