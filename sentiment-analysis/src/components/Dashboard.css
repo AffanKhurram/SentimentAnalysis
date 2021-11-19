@@ -1,5 +1,13 @@
+:root{
+
+    --blue: #232f3e;
+    --white: #faf0e6;
+
+}
+
+
 * {
-    background-color: #232f3e;
+    background-color: var(--blue);
     color: #FFFFFF;
 }
 
