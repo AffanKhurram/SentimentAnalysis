@@ -10,6 +10,7 @@
 
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
 export default function LoggedInDashboard() {
@@ -39,6 +40,7 @@ export default function LoggedInDashboard() {
         <div>
             Logged in as
             <div>{currentUser?.email}</div>
+            Go to <Link to="/wordprocessing">Word Processing Page</Link><br/>
             <button type="button" onClick={logout}>Logout</button>
         </div>
     )
