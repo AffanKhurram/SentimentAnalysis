@@ -1,5 +1,6 @@
 {
   "name": "sentiment-analysis",
+  "homepage": "https://affankhurram.github.io/SentimentAnalysis/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
