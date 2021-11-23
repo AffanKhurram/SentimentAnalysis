@@ -19,11 +19,11 @@ import InputIcon from '@material-ui/icons/Input'
 import SaveIcon from '@material-ui/icons/Save'
 import Paper from '@material-ui/core/Paper'
 import { CssBaseline } from '@material-ui/core'
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 
-const themeDark = createMuiTheme({
+const themeDark = createTheme({
     palette: {
       background: {
         default: "#232f3e"
