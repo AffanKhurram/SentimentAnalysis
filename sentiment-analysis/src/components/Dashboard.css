@@ -2,14 +2,16 @@
 
     --blue: #232f3e;
     --white: #faf0e6;
+    --orange: #E47911;
+
 
 }
 
 
-* {
-    background-color: var(--blue);
+/* {
+    background-color: var(--orange);
     color: #FFFFFF;
-}
+}*/
 
 .header {
     position: relative;
@@ -19,7 +21,7 @@
     font-size: 50px;
     line-height: 178px;
     text-align: center;
-    color: #FFFFFF;
+    color: var(--white);
 }
 
 .Button {
