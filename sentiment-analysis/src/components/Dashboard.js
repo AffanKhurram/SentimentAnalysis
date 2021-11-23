@@ -37,8 +37,11 @@
      // Return the layout of the page
      return (
        
-                 <div  >
-             <h1 className="header">Reviews Busters</h1>
+         <div>
+             
+             <img alt = "not found" src="MainProjPic.png" />
+           
+             <h1 className="header">Review Busters</h1>
              <br></br>
                  <Button endIcon ={<InputIcon/>} size = "large" href = "/login" variant = "contained" color = "primary">
                      Login
