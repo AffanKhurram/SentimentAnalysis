@@ -7,7 +7,9 @@
  * 11/3/21
  */
 
-import Button from '@restart/ui/esm/Button'
+//import Button from '@restart/ui/esm/Button'
+import Button from '@material-ui/core/Button'
+
 import React from 'react'
 import { Card, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -27,7 +29,7 @@ export default function WordProcessing() {
                         <Form.Control as="textarea" rows={5}></Form.Control>
                     </Form.Group>
                     <div className="text-center mt-2">
-                        <Button type="submit">
+                        <Button type="submit" variant = "contained" color = "secondary">
                             Analyze
                         </Button>
                     </div>
