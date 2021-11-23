@@ -10,7 +10,7 @@ export default function Page2() {
             <br></br>
             <br></br>
             <h3> Change the Back Ground Color </h3>
-            <h3 classname = "headers"><Link to="/">Dashboard</Link></h3>
+            <h3 className = "headers"><Link to="/">Dashboard</Link></h3>
 
         </div>
     )

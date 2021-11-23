@@ -3,15 +3,9 @@
     --blue: #232f3e;
     --white: #faf0e6;
     --orange: #E47911;
-
-
 }
 
 
-/* {
-    background-color: var(--orange);
-    color: #FFFFFF;
-}*/
 
 .header {
     position: relative;
@@ -25,7 +19,7 @@
 }
 
 .Button {
-    background-color: #ffffff;
+    background-color: var(--blue);
     font-family: Arvo;
     font-style: normal;
     font-weight: normal;

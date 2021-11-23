@@ -22,7 +22,7 @@ function App() {
   return (
     <Container className="d-flex align-items-center justify-content-center" style={{minHeight: "100vh"}}>
       <div className="w-100" style={{ maxWidth: "400px" }}>
-        <Router basename={process.env.PUBLIC_URL}>
+        <Router>
           <AuthProvider>
             {/* These classes that are associated with each of the paths */}
             <Routes>
