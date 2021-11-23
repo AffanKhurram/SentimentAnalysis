@@ -51,6 +51,7 @@ export default function Signup() {
             // If something goes wrong, show error message
             console.log(error)
             setError("Failed to create an account")
+            setLoading(false)
         }
 
         setLoading(false)

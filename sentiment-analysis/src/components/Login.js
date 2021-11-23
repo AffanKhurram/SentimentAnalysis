@@ -41,6 +41,7 @@ export default function Login() {
             // Show error message if something went wrong when trying to log in
             console.log(e)
             setError("Failed to login")
+            setLoading(false)
         }
     }
 
