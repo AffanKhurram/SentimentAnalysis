@@ -35,6 +35,14 @@
     color: white;
 }
 
+.image {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .Button {
     background-color: var(--blue);
     font-family: Arvo;

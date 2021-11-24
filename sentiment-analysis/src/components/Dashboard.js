@@ -23,14 +23,14 @@ import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 
 const themeDark = createTheme({
     palette: {
-      background: {
-        default: "#232f3e"
-      },
-      text: {
-        primary: "#ffffff"
-      }
+        background: {
+            default: "#232f3e"
+        },
+        text: {
+            primary: "#ffffff"
+        }
     }
-  });
+});
 
 export default function Dashboard() {
     const { currentUser } = useAuth()
@@ -46,24 +46,26 @@ export default function Dashboard() {
 
     // Return the layout of the page
     return (
+
         <div>
             <MuiThemeProvider theme={themeDark}>
-            <h1 className="header">Reviews Busters</h1>
-            <br></br>
-            <CssBaseline />
-            <Button endIcon={<InputIcon />} component={Link} to="/login" size="large" variant="contained" color="primary">
-                Login
-            </Button>
-            <br/><br/>
-            <Button endIcon={<InputIcon />} component={Link} to="/signup" size="large" variant="contained" color="primary">
-                signup
-            </Button>
-            <br/><br/>
-            <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="large" to="/wordprocessing" variant="contained" color="primary">
-                wordprocessing
-            </Button>
-            <br/><br/>
-            {/* <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="large" to="/Page2" variant="contained" color="primary">
+                <img alt="not found" src={require('./MainProjPic.png').default} className="image" />
+                <h1 className="header">Review Busters</h1>
+                <br></br>
+                <CssBaseline />
+                <Button endIcon={<InputIcon />} component={Link} to="/login" size="large" variant="contained" color="primary">
+                    Login
+                </Button>
+                <br /><br />
+                <Button endIcon={<InputIcon />} component={Link} to="/signup" size="large" variant="contained" color="primary">
+                    signup
+                </Button>
+                <br /><br />
+                <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="large" to="/wordprocessing" variant="contained" color="primary">
+                    wordprocessing
+                </Button>
+                <br /><br />
+                {/* <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="large" to="/Page2" variant="contained" color="primary">
                 Settings
             </Button>*/}
             </MuiThemeProvider>
