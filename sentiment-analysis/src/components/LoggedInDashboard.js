@@ -11,6 +11,23 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../contexts/AuthContext'
+import { CssBaseline } from '@material-ui/core'
+import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button'
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+
+
+const themeDark = createTheme({
+    palette: {
+      background: {
+        default: "#232f3e"
+      },
+      text: {
+        primary: "#ffffff"
+      }
+    }
+  });
 
 export default function LoggedInDashboard() {
     const { currentUser, signOut } = useAuth()
@@ -36,10 +53,17 @@ export default function LoggedInDashboard() {
     // This page's layout
     // For now, just displays user's email and then a logout button
     return (
-        <div>
-            Logged in as
-            <div>{currentUser?.email}</div>
-            <button type="button" onClick={logout}>Logout</button>
+        <MuiThemeProvider theme={themeDark}>
+            <CssBaseline />
+        <div className="lighttext">
+            Logged in as {currentUser?.email}<br/><br/>
+            <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="small" to="/wordprocessing" variant="contained" color="primary">
+                wordprocessing
+            </Button> <br/><br/>
+            <Button endIcon={<ArrowForwardIosIcon />} size="small" variant="contained" color="primary" onClick={logout}>
+                Logout
+            </Button>
         </div>
+        </MuiThemeProvider>
     )
 }

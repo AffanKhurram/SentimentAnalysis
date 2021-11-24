@@ -16,11 +16,9 @@ import { useNavigate } from 'react-router'
 import './Dashboard.css'
 import Button from '@material-ui/core/Button'
 import InputIcon from '@material-ui/icons/Input'
-import SaveIcon from '@material-ui/icons/Save'
-import Paper from '@material-ui/core/Paper'
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { CssBaseline } from '@material-ui/core'
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 
 const themeDark = createTheme({
@@ -48,7 +46,7 @@ export default function Dashboard() {
 
     // Return the layout of the page
     return (
-        <div  className="body">
+        <div>
             <MuiThemeProvider theme={themeDark}>
             <h1 className="header">Reviews Busters</h1>
             <br></br>
@@ -56,15 +54,15 @@ export default function Dashboard() {
             <Button endIcon={<InputIcon />} component={Link} to="/login" size="large" variant="contained" color="primary">
                 Login
             </Button>
-            <br></br>
+            <br/><br/>
             <Button endIcon={<InputIcon />} component={Link} to="/signup" size="large" variant="contained" color="primary">
                 signup
             </Button>
-            <br></br>
+            <br/><br/>
             <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="large" to="/wordprocessing" variant="contained" color="primary">
                 wordprocessing
             </Button>
-            <br></br>
+            <br/><br/>
             {/* <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="large" to="/Page2" variant="contained" color="primary">
                 Settings
             </Button>*/}

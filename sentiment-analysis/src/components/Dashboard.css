@@ -18,6 +18,23 @@
     color: var(--white);
 }
 
+.logintext {
+    color: black;
+    position: relative;
+    text-align: center;
+    font-family: Arvo;
+    font-size: 30px;
+}
+
+.text {
+    color: black;
+
+}
+
+.lighttext {
+    color: white;
+}
+
 .Button {
     background-color: var(--blue);
     font-family: Arvo;

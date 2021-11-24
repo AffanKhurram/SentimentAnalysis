@@ -11,6 +11,20 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
+import { CssBaseline } from '@material-ui/core'
+import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
+import './Dashboard.css'
+
+const themeDark = createTheme({
+    palette: {
+      background: {
+        default: "#232f3e"
+      },
+      text: {
+        primary: "#ffffff"
+      }
+    }
+  });
 
 export default function Login() {
     const emailRef = useRef()
@@ -47,12 +61,13 @@ export default function Login() {
 
     // HTML layout of page
     return (
-        <>
+        <MuiThemeProvider theme={themeDark}>
+            <CssBaseline/>
             <Card>
                 <Card.Body>
-                    <h2 className="text-center mb-4">Log In</h2>
+                    <h2 className="logintext">Log In</h2>
                 {error && <Alert variant="danger">{error}</Alert>}
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} className="text">
                     <Form.Group id="email">
                         <Form.Label>Email</Form.Label>
                         <Form.Control type="email" ref={emailRef} required />
@@ -73,6 +88,6 @@ export default function Login() {
             <div className="w-100 text-center mt-2">
                 Go back to <Link to="/">dashboard</Link>
             </div>
-        </>
+        </MuiThemeProvider>
     )
 }
