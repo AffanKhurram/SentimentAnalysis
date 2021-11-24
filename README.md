@@ -2,28 +2,29 @@
 
 Visit the hosted website: https://affankhurram.github.io/SentimentAnalysis/
 
-To run the code
 
-download it
+
+If you want to run the code yourself, follow these steps:
+1. Download it
 ```console
 git clone https://github.com/AffanKhurram/SentimentAnalysis.git
 ```
-go into downloaded repository
+2. Go into downloaded repository
 
 ```console
 cd SentimentAnalysis
 ```
-go into sentiment-analysis folder
+3. Go into sentiment-analysis folder
 ```console
 cd sentiment-analysis
 ```
 
-install dependencies
+4. Install dependencies
 ```console
 npm install
 ```
 
-run the program
+5. Run the program
 ```console
 npm run start
 ```
