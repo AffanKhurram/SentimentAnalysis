@@ -1,20 +1,23 @@
 {
   "files": {
-    "main.js": "/SentimentAnalysis/static/js/main.16677e87.chunk.js",
-    "main.js.map": "/SentimentAnalysis/static/js/main.16677e87.chunk.js.map",
+    "main.css": "/SentimentAnalysis/static/css/main.684a1a6b.chunk.css",
+    "main.js": "/SentimentAnalysis/static/js/main.ce3df403.chunk.js",
+    "main.js.map": "/SentimentAnalysis/static/js/main.ce3df403.chunk.js.map",
     "runtime-main.js": "/SentimentAnalysis/static/js/runtime-main.9cfdc832.js",
     "runtime-main.js.map": "/SentimentAnalysis/static/js/runtime-main.9cfdc832.js.map",
     "static/css/2.0a9ec390.chunk.css": "/SentimentAnalysis/static/css/2.0a9ec390.chunk.css",
-    "static/js/2.50c34c64.chunk.js": "/SentimentAnalysis/static/js/2.50c34c64.chunk.js",
-    "static/js/2.50c34c64.chunk.js.map": "/SentimentAnalysis/static/js/2.50c34c64.chunk.js.map",
+    "static/js/2.060a84d7.chunk.js": "/SentimentAnalysis/static/js/2.060a84d7.chunk.js",
+    "static/js/2.060a84d7.chunk.js.map": "/SentimentAnalysis/static/js/2.060a84d7.chunk.js.map",
     "index.html": "/SentimentAnalysis/index.html",
     "static/css/2.0a9ec390.chunk.css.map": "/SentimentAnalysis/static/css/2.0a9ec390.chunk.css.map",
-    "static/js/2.50c34c64.chunk.js.LICENSE.txt": "/SentimentAnalysis/static/js/2.50c34c64.chunk.js.LICENSE.txt"
+    "static/css/main.684a1a6b.chunk.css.map": "/SentimentAnalysis/static/css/main.684a1a6b.chunk.css.map",
+    "static/js/2.060a84d7.chunk.js.LICENSE.txt": "/SentimentAnalysis/static/js/2.060a84d7.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9cfdc832.js",
     "static/css/2.0a9ec390.chunk.css",
-    "static/js/2.50c34c64.chunk.js",
-    "static/js/main.16677e87.chunk.js"
+    "static/js/2.060a84d7.chunk.js",
+    "static/css/main.684a1a6b.chunk.css",
+    "static/js/main.ce3df403.chunk.js"
   ]
 }
