@@ -13,6 +13,7 @@ import Login from "./Login"
 import WordProcessing from "./WordProcessing"
 import LoggedInDashboard from "./LoggedInDashboard"
 import Page2 from "./Page2"
+import Changepassword from "./Changepassword"
 import { Container } from 'react-bootstrap'
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
@@ -32,7 +33,7 @@ function App() {
               <Route path="/wordprocessing" element={<WordProcessing/>} />
               <Route path="/loggedindashboard" element={<LoggedInDashboard/>} />
               <Route path="/page2" element={<Page2/>} />
-
+              <Route path="changepassword" element={<Changepassword />} />
             </Routes>
           </AuthProvider>
         </Router>

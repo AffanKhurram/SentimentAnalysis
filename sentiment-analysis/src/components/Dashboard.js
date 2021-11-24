@@ -49,7 +49,7 @@ export default function Dashboard() {
 
         <div>
             <MuiThemeProvider theme={themeDark}>
-                <img alt="not found" src={require('./MainProjPic.png').default} className="image" />
+                <img alt="not found" src={process.env.PUBLIC_URL +  '/MainProjPic.png'} className="image" />
                 <h1 className="header">Review Busters</h1>
                 <br></br>
                 <CssBaseline />
