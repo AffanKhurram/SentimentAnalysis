@@ -15,24 +15,15 @@ import { CssBaseline } from '@material-ui/core'
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import './Dashboard.css'
 
-const themeDark = createTheme({
-    palette: {
-      background: {
-        default: "#232f3e"
-      },
-      text: {
-        primary: "#ffffff"
-      }
-    }
-  });
-
 export default function Login() {
     const emailRef = useRef()
     const passwordRef = useRef()
-    const { currentUser, login } = useAuth()
+    const { currentUser, login, color, getColor } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
+
+    
 
     // Redirect to the loggedin dashboard after the user has successfully logged in
     useEffect(function() {
@@ -40,6 +31,23 @@ export default function Login() {
             navigate("/loggedindashboard", [currentUser])
         }
     }, [currentUser, navigate])
+
+    getColor()
+
+    useEffect(function () {
+    }, [color])
+
+    const themeDark = createTheme({
+
+        palette: {
+            background: {
+                default: color
+            },
+            text: {
+                primary: "#ffffff"
+            }
+        }
+    });
     
     // Called when login button is pressed
     async function handleSubmit(e) {

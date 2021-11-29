@@ -18,19 +18,8 @@ import Button from '@material-ui/core/Button'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 
-const themeDark = createTheme({
-    palette: {
-      background: {
-        default: "#232f3e"
-      },
-      text: {
-        primary: "#ffffff"
-      }
-    }
-  });
-
 export default function LoggedInDashboard() {
-    const { currentUser, signOut } = useAuth()
+    const { currentUser, signOut, color, getColor } = useAuth()
     const navigate = useNavigate()
     
     // If user is not logged in and we are on this page, then go back to the logged out dashboard
@@ -39,6 +28,23 @@ export default function LoggedInDashboard() {
             navigate("/", [currentUser])
         }
     }, [currentUser, navigate])
+
+    getColor()
+
+    useEffect(function () {
+    }, [color])
+
+    const themeDark = createTheme({
+
+        palette: {
+            background: {
+                default: color
+            },
+            text: {
+                primary: "#ffffff"
+            }
+        }
+    });
 
     // Logs out the current user 
     async function logout() {

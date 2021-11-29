@@ -6,21 +6,11 @@ import { CssBaseline } from '@material-ui/core'
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import './Dashboard.css'
 
-const themeDark = createTheme({
-    palette: {
-        background: {
-            default: "#232f3e"
-        },
-        text: {
-            primary: "#ffffff"
-        }
-    }
-});
 
 export default function Changepassword() {
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
-    const { currentUser, changePassword, signOut } = useAuth()
+    const { currentUser, changePassword, signOut, color, getColor } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
@@ -30,6 +20,23 @@ export default function Changepassword() {
             navigate("/", [currentUser])
         }
     }, [currentUser, navigate])
+
+    getColor()
+
+    useEffect(function () {
+    }, [color])
+
+    const themeDark = createTheme({
+
+        palette: {
+            background: {
+                default: color
+            },
+            text: {
+                primary: "#ffffff"
+            }
+        }
+    });
 
     // Called when submit button is clicked
     async function handleSubmit(e) {

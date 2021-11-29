@@ -45,25 +45,29 @@ export function AuthProvider({ children }) {
         }
     }
     // user data
-    function changeColor() {
+    function changeColor(new_color, email) {
         if (currentUser) {
-            return set(ref(db, 'users/affankhurram1@gmailcom'), {
-                color: "#0000ff"
+            set(ref(db, 'users/' + email), {
+                color: new_color
             })
+            setColor(new_color)
         }
     }
     // get color data
-    function getColor(email) {
+    function getColor() {
         if (currentUser) {
-            return get(ref(db, 'users/' + email))
+            get(ref(db, 'users/' + currentUser.email.replace('.', '')))
                 .then(function(snapshot) {
                     var color = snapshot.val().color
-                    console.log('color in function ', color, typeof color)
+                    // console.log('color in function ', color, typeof color)
                     setColor(color)
                 })
                 .catch(function(err) {
-                    console.log(err)
+                    setColor("#232f3e")
                 })
+        }
+        else {
+            setColor("#232f3e")
         }
     }
 

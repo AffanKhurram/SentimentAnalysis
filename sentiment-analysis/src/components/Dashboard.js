@@ -21,19 +21,9 @@ import { CssBaseline } from '@material-ui/core'
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 
 
-const themeDark = createTheme({
-    palette: {
-        background: {
-            default: "#232f3e"
-        },
-        text: {
-            primary: "#ffffff"
-        }
-    }
-});
 
 export default function Dashboard() {
-    const { currentUser } = useAuth()
+    const { currentUser, color, getColor } = useAuth()
     const navigate = useNavigate()
 
     // If logged in, then redirect to LoggedInDashboard
@@ -42,6 +32,23 @@ export default function Dashboard() {
             navigate("/loggedindashboard", [currentUser])
         }
     }, [currentUser, navigate])
+
+    getColor()
+
+    useEffect(function () {
+    }, [color])
+
+    const themeDark = createTheme({
+
+        palette: {
+            background: {
+                default: color
+            },
+            text: {
+                primary: "#ffffff"
+            }
+        }
+    });
 
 
     // Return the layout of the page

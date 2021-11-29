@@ -9,6 +9,8 @@
 
 import Button from '@material-ui/core/Button'
 import React from 'react'
+import { useAuth } from '../contexts/AuthContext'
+import { useEffect } from 'react'
 import { Card, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { CssBaseline } from '@material-ui/core'
@@ -17,18 +19,27 @@ import "./Dashboard"
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 
-const themeDark = createTheme({
-    palette: {
-        background: {
-            default: "#232f3e"
-        },
-        text: {
-            primary: "#ffffff"
-        }
-    }
-});
-
 export default function WordProcessing() {
+
+    const { color, getColor } = useAuth()
+
+
+    getColor()
+
+    useEffect(function () {
+    }, [color])
+
+    const themeDark = createTheme({
+
+        palette: {
+            background: {
+                default: color
+            },
+            text: {
+                primary: "#ffffff"
+            }
+        }
+    });
 
     async function analyze(e) {
         e.preventDefault()
