@@ -27,9 +27,9 @@ export default function Settings() {
                 <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="small" to="/changepassword" variant="contained" color="primary">
                     Change Password
                 </Button> <br /><br />
-                <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="small" to="/backgroundcolor" variant="contained" color="primary">
+                {/* <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="small" to="/backgroundcolor" variant="contained" color="primary">
                     Change Background Color
-                </Button> <br /><br />
+                </Button> <br /><br /> */}
                 <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="small" to="/" variant="contained" color="primary">
                     Dashboard
                 </Button> <br /><br />
