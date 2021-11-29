@@ -7,8 +7,9 @@
  * 1.0.0
  * 11/6/21
  */
+import { set, ref, get } from '@firebase/database'
 import React, { useContext , useState, useEffect } from 'react'
-import { auth } from '../firebase.js'
+import { auth, db } from '../firebase.js'
 
 const AuthContext = React.createContext()
 
@@ -21,6 +22,7 @@ export function AuthProvider({ children }) {
 
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
+    const [color, setColor] = useState("#232f3e")
 
     // Calls the signup function on the database
     function signup(email, password) {
@@ -34,6 +36,34 @@ export function AuthProvider({ children }) {
     function signOut() {
         if (currentUser) {
             auth.signOut()
+        }
+    }
+    // Updates the password
+    function changePassword(newPassword) {
+        if (currentUser) {
+            return auth.currentUser.updatePassword(newPassword)
+        }
+    }
+    // user data
+    function changeColor() {
+        if (currentUser) {
+            return set(ref(db, 'users/affankhurram1@gmailcom'), {
+                color: "#0000ff"
+            })
+        }
+    }
+    // get color data
+    function getColor(email) {
+        if (currentUser) {
+            return get(ref(db, 'users/' + email))
+                .then(function(snapshot) {
+                    var color = snapshot.val().color
+                    console.log('color in function ', color, typeof color)
+                    setColor(color)
+                })
+                .catch(function(err) {
+                    console.log(err)
+                })
         }
     }
 
@@ -50,9 +80,13 @@ export function AuthProvider({ children }) {
     // Functions and variables that other componenents will need access to
     const value = {
         currentUser,
+        color,
         signup,
         login,
-        signOut
+        signOut,
+        changePassword,
+        changeColor,
+        getColor
     }
 
     // Return the context, providing the values that everything should be able to use

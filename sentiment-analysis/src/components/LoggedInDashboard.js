@@ -62,6 +62,9 @@ export default function LoggedInDashboard() {
             </Button> <br/><br/>
             <Button endIcon={<ArrowForwardIosIcon />} size="small" variant="contained" color="primary" onClick={logout}>
                 Logout
+            </Button> <br/><br/>
+            <Button endIcon={<ArrowForwardIosIcon />} component={Link} to="/settings" size="small" variant="contained" color="primary">
+                Settings
             </Button>
         </div>
         </MuiThemeProvider>
