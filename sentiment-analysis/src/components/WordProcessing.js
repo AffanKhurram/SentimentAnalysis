@@ -8,7 +8,7 @@
  */
 
 import Button from '@restart/ui/esm/Button'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Card, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Dialog from "@material-ui/core/Dialog";
@@ -33,6 +33,7 @@ function binarySearch(ar, el) {
 }
 
 export default function WordProcessing() {
+    const [score, setScore] = useState(0)
     const textRef = useRef()
     const positive = feedback_json['positive']
     const negative = feedback_json['negative']
@@ -42,6 +43,10 @@ export default function WordProcessing() {
     // const handleClose = () => {
     //     setOpen(false);
     // };
+
+    useEffect(function() {
+        reviewScore = score
+    }, [score])
 
     async function analyze(e) {
         e.preventDefault(); // prevents page from refreshing on submit
@@ -67,6 +72,7 @@ export default function WordProcessing() {
         })
 
         reviewScore = positiveScore - negativeScore
+        setScore(reviewScore)
         console.log(reviewScore)
     }
 
@@ -95,7 +101,7 @@ export default function WordProcessing() {
             </Card.Body>
             
             <div className="w-100 text-center mt-2">
-                Review score = {reviewScore} <br/>
+                Review score = {score} <br/>
                 Go back to <Link to="/">dashboard</Link>
             </div>
         </Card>
