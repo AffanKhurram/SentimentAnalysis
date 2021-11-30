@@ -39,11 +39,13 @@ export default function WordProcessing() {
 
     const { color, getColor } = useAuth()
     const [score, setScore] = useState(0)
+    const [currentText, setCurrentText] = useState("")
+    const [currentPositive, setPositive] = useState("")
+    const [currentNegative, setNegative] = useState("")
     const textRef = useRef()
+    const formRef = useRef()
     const positive = feedback_json['positive']
     const negative = feedback_json['negative']
-    let reviewScore = 0
-
 
     getColor()
 
@@ -64,30 +66,51 @@ export default function WordProcessing() {
 
     async function analyze(e) {
         e.preventDefault(); // prevents page from refreshing on submit
-        //setOpen(true);
 
-        let positiveScore = 0
-        let negativeScore = 0
-        let tempPositive = []
-        let tempNegative = []
+        let reviewScore = 0
+        let positiveWords = []
+        let negativeWords = []
 
-        const getScore = textRef.current.value.split(" ").map(w => {
-            if (tempPositive.includes(w)) {
-                positiveScore += 1;
-            } else if (tempNegative.includes(w)) {
-                negativeScore += 1;
+        textRef.current.value.split(" ").map((w,i,arr) => {
+            if (positiveWords.includes(w)) {
+                if (arr[i-1] === "not") reviewScore += -1;
+                else reviewScore += 1;
+            } else if (negativeWords.includes(w)) {
+                if (arr[i-1] === "not") reviewScore += 1;
+                else reviewScore += -1;
             } else if (binarySearch(positive, w)) {
-                positiveScore += 1;
-                tempPositive.push(w);
+                if (arr[i-1] === "not") reviewScore += -1;
+                else reviewScore += 1;
+                positiveWords.push(w);
             } else if (binarySearch(negative, w)) {
-                negativeScore += 1;
-                tempNegative.push(w)
+                if (arr[i-1] === "not") reviewScore += 1;
+                else reviewScore += -1;
+                negativeWords.push(w);
             }
         })
 
-        reviewScore = positiveScore - negativeScore
+        setPositive(positiveWords.join(", "))
+        setNegative(negativeWords.join(", "))
         setScore(reviewScore)
-        console.log(reviewScore)
+        setCurrentText(textRef.current.value)
+    }
+
+    async function reset(e) {
+        e.preventDefault();
+        formRef.current.reset();
+        setScore(0)
+        setCurrentText("")
+        setPositive("")
+        setNegative("")
+    }
+
+    function onAnalyze(e) {
+        setScore(0)
+        setCurrentText(textRef.current.value)
+        setPositive("")
+        setNegative("")
+        analyze(e)
+        
     }
 
     return (
@@ -95,20 +118,41 @@ export default function WordProcessing() {
             <CssBaseline />
             <Card>
                 <Card.Body>
-                    <Form onSubmit={analyze}>
+                    <Form onSubmit={onAnalyze} ref={formRef}> 
                         <Form.Group id='text' className="logintext">
                             <Form.Label>Enter your text here</Form.Label>
                             <Form.Control as="textarea" rows={5} ref={textRef}></Form.Control>
                         </Form.Group>
+   
                         <div className="text-center mt-2">
-
+                            <Button type="submit" variant="contained" color="secondary">
+                                Analyze
+                            </Button>
+                        </div>
+                    </Form>
+                </Card.Body>
+            </Card>
+            <br/>
+            <Card>
+                <Card.Body>
+                    <Form onSubmit={reset}>
+                        <Form.Group id='text' className="logintext">
+                            <Form.Label>Results</Form.Label>
+                        </Form.Group>
+                        <div className="text-center mt-2">
                             <div className="text">
-                                Review score = {score} <br />
+                                Text Analyzed: <br />
+                                {currentText} <br /><br />
+                                Review score: {score} <br /> <br />
+                                All positive words: <br />
+                                {currentPositive} <br /><br />
+                                All negative words: <br />
+                                {currentNegative} <br /><br />
                             </div>
                         </div>
                         <div className="text-center mt-2">
                             <Button type="submit" variant="contained" color="secondary">
-                                Analyze
+                                Reset
                             </Button>
                         </div>
                     </Form>
