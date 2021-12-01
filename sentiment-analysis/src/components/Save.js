@@ -29,8 +29,11 @@ export default function Save() {
         }
     });
 
-    var reviews = getReviews()
-    console.log(reviews)
+    var reviews = []
+    getReviews()
+        .then(function(r) {
+            console.log(r)
+        })
 
     return (
         <MuiThemeProvider theme={themeDark}>

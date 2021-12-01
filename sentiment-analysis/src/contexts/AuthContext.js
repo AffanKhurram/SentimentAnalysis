@@ -71,17 +71,26 @@ export function AuthProvider({ children }) {
             })
         }
     }
-    function getReviews() {
+    async function getReviews() {
+        var reviews = []
         if(currentUser) {
-            get(ref(db, 'users/' + currentUser.email.replace('.', '')))
-                .then(function (snapshot) {
-                    var reviews = JSON.parse(snapshot.val().reviews)
-                    return reviews
-                })
-                .catch(function (err) {
-                    return []
-                })
+            // get(ref(db, 'users/' + currentUser.email.replace('.', '')))
+            //     .then(function (snapshot) {
+            //         reviews = JSON.parse(snapshot.val().reviews)
+            //         console.log('inside func', reviews)
+            //     })
+            //     .catch(function (err) {
+                    
+            //     })
+            var test = await get(ref(db, 'users/' + currentUser.email.replace('.', '')))
+            if (test.val().reviews !== undefined) {
+                reviews = JSON.parse(test.val().reviews)
+            }
+            else {
+                reviews = []
+            }
         }
+        return reviews
     }
     // get color data
     function getColor() {
