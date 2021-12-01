@@ -73,19 +73,15 @@ export default function WordProcessing() {
 
         textRef.current.value.split(" ").map((w,i,arr) => {
             if (positiveWords.includes(w)) {
-                if (arr[i-1] === "not") reviewScore += -1;
-                else reviewScore += 1;
+                reviewScore += (arr[i-1] === "not" ? -1 : 1)
             } else if (negativeWords.includes(w)) {
-                if (arr[i-1] === "not") reviewScore += 1;
-                else reviewScore += -1;
+                reviewScore += (arr[i-1] === "not" ? 1 : -1)
             } else if (binarySearch(positive, w)) {
-                if (arr[i-1] === "not") reviewScore += -1;
-                else reviewScore += 1;
-                positiveWords.push(w);
+                reviewScore += (arr[i-1] === "not" ? -1 : 1)
+                arr[i-1] === "not" ? negativeWords.push("not "+w) : positiveWords.push(w)
             } else if (binarySearch(negative, w)) {
-                if (arr[i-1] === "not") reviewScore += 1;
-                else reviewScore += -1;
-                negativeWords.push(w);
+                reviewScore += (arr[i-1] === "not" ? 1 : -1)
+                arr[i-1] === "not" ? positiveWords.push("not "+w) : negativeWords.push(w)
             }
         })
 
@@ -123,7 +119,6 @@ export default function WordProcessing() {
                             <Form.Label>Enter your text here</Form.Label>
                             <Form.Control as="textarea" rows={5} ref={textRef}></Form.Control>
                         </Form.Group>
-   
                         <div className="text-center mt-2">
                             <Button type="submit" variant="contained" color="secondary">
                                 Analyze
