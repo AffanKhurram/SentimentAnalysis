@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/SentimentAnalysis/static/css/main.0de784ad.chunk.css",
-    "main.js": "/SentimentAnalysis/static/js/main.f6661b6b.chunk.js",
-    "main.js.map": "/SentimentAnalysis/static/js/main.f6661b6b.chunk.js.map",
+    "main.js": "/SentimentAnalysis/static/js/main.35a7aa39.chunk.js",
+    "main.js.map": "/SentimentAnalysis/static/js/main.35a7aa39.chunk.js.map",
     "runtime-main.js": "/SentimentAnalysis/static/js/runtime-main.9cfdc832.js",
     "runtime-main.js.map": "/SentimentAnalysis/static/js/runtime-main.9cfdc832.js.map",
     "static/css/2.0a9ec390.chunk.css": "/SentimentAnalysis/static/css/2.0a9ec390.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.0a9ec390.chunk.css",
     "static/js/2.e7bf8c89.chunk.js",
     "static/css/main.0de784ad.chunk.css",
-    "static/js/main.f6661b6b.chunk.js"
+    "static/js/main.35a7aa39.chunk.js"
   ]
 }
