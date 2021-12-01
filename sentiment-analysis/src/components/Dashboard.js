@@ -56,7 +56,7 @@ export default function Dashboard() {
 
         <div>
             <MuiThemeProvider theme={themeDark}>
-                <img alt="not found" src={process.env.PUBLIC_URL +  '/MainProjPic.png'} className="image" />
+                <img alt="not found" src={process.env.PUBLIC_URL + '/MainProjPic.png'} className="image" />
                 <h1 className="header">Review Busters</h1>
                 <br></br>
                 <CssBaseline />
@@ -72,9 +72,9 @@ export default function Dashboard() {
                     wordprocessing
                 </Button>
                 <br /><br />
-                {/* <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="large" to="/Page2" variant="contained" color="primary">
-                Settings
-            </Button>*/}
+                <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="large" to="/product" variant="contained" color="primary">
+                    Products Page
+                </Button>
             </MuiThemeProvider>
         </div>
 

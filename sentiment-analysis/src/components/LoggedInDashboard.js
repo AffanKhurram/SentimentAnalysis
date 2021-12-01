@@ -21,9 +21,9 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 export default function LoggedInDashboard() {
     const { currentUser, signOut, color, getColor } = useAuth()
     const navigate = useNavigate()
-    
+
     // If user is not logged in and we are on this page, then go back to the logged out dashboard
-    useEffect(function() {
+    useEffect(function () {
         if (!currentUser) {
             navigate("/", [currentUser])
         }
@@ -61,18 +61,21 @@ export default function LoggedInDashboard() {
     return (
         <MuiThemeProvider theme={themeDark}>
             <CssBaseline />
-        <div className="lighttext">
-            Logged in as {currentUser?.email}<br/><br/>
-            <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="small" to="/wordprocessing" variant="contained" color="primary">
-                wordprocessing
-            </Button> <br/><br/>
-            <Button endIcon={<ArrowForwardIosIcon />} size="small" variant="contained" color="primary" onClick={logout}>
-                Logout
-            </Button> <br/><br/>
-            <Button endIcon={<ArrowForwardIosIcon />} component={Link} to="/settings" size="small" variant="contained" color="primary">
-                Settings
-            </Button>
-        </div>
+            <div className="lighttext">
+                Logged in as {currentUser?.email}<br /><br />
+                <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="small" to="/wordprocessing" variant="contained" color="primary">
+                    wordprocessing
+                </Button> <br /><br />
+                <Button endIcon={<ArrowForwardIosIcon />} size="small" variant="contained" color="primary" onClick={logout}>
+                    Logout
+                </Button> <br /><br />
+                <Button endIcon={<ArrowForwardIosIcon />} component={Link} to="/settings" size="small" variant="contained" color="primary">
+                    Settings
+                </Button> <br /><br />
+                <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="large" to="/product" variant="contained" color="primary">
+                    Products Page
+                </Button>
+            </div>
         </MuiThemeProvider>
     )
 }
