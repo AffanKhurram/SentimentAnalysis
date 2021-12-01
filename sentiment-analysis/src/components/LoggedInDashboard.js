@@ -72,6 +72,9 @@ export default function LoggedInDashboard() {
                 <Button endIcon={<ArrowForwardIosIcon />} component={Link} to="/settings" size="small" variant="contained" color="primary">
                     Settings
                 </Button> <br /><br />
+                <Button endIcon={<ArrowForwardIosIcon />} component={Link} to="/saved" size="small" variant="contained" color="primary">
+                    Old Reviews
+                </Button> <br /><br />
                 <Button endIcon={<ArrowForwardIosIcon />} component={Link} size="large" to="/product" variant="contained" color="primary">
                     Products Page
                 </Button>

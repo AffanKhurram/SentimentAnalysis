@@ -17,6 +17,7 @@ import Changepassword from "./Changepassword"
 import Settings from "./Settings"
 import Background from "./Background"
 import Product from "./Product"
+import Save from "./Save"
 import { Container } from 'react-bootstrap'
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
@@ -40,6 +41,7 @@ function App() {
               <Route path="changepassword" element={<Changepassword />} />
               <Route path="backgroundcolor" element={<Background />} />
               <Route path="product" element={<Product />} />
+              <Route path="saved" element={<Save />} />
             </Routes>
           </AuthProvider>
         </Router>
