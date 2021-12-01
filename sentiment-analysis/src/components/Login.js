@@ -61,8 +61,19 @@ export default function Login() {
         }
         catch (e) {
             // Show error message if something went wrong when trying to log in
-            console.log(e)
-            setError("Failed to login")
+            console.log(e.code)
+            var error_message = ''
+            switch(e.code) {
+                case 'auth/wrong-password':
+                    error_message = 'Incorrect password'
+                    break
+                case 'auth/user-not-found':
+                    error_message = 'User does not exist. Try signing up first'
+                    break
+                default:
+                    error_message = 'Failed to create account'
+            }
+            setError(error_message)
             setLoading(false)
         }
     }

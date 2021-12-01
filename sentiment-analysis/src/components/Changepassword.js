@@ -54,10 +54,24 @@ export default function Changepassword() {
             setLoading(true)
             await changePassword(passwordRef.current.value)
             await signOut()
-        } catch {
+        } catch (e) {
             // If something goes wrong, show error message
-            console.log(error)
-            setError("Failed to update password")
+            console.log(e.code)
+            var error_message = ''
+            switch(e.code) {
+                case 'auth/invalid-email':
+                    error_message = 'Please enter a valid email address'
+                    break
+                case 'auth/weak-password':
+                    error_message = 'Weak password: password must contain at least 6 characters'
+                    break
+                case 'auth/email-already-in-use':
+                    error_message = 'Email already used for another account'
+                    break
+                default:
+                    error_message = 'Failed to create account'
+            }
+            setError(error_message)
             setLoading(false)
         }
 
