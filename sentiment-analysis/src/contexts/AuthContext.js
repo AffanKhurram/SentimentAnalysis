@@ -8,15 +8,15 @@
  * 11/6/21
  */
 import { set, ref, get } from '@firebase/database'
-import React, { useContext , useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { auth, db } from '../firebase.js'
 
 const AuthContext = React.createContext()
 
 // Function that everything uses to reference this context
-export function useAuth() { 
+export function useAuth() {
     return useContext(AuthContext)
-} 
+}
 
 export function AuthProvider({ children }) {
 
@@ -53,16 +53,55 @@ export function AuthProvider({ children }) {
             setColor(new_color)
         }
     }
+    async function saveReview(review) {
+        if (currentUser) {
+            var reviews_json;
+            var test = await get(ref(db, 'users/' + currentUser.email.replace('.', '')))
+            if (test.val().reviews !== undefined) {
+                var reviews = JSON.parse(test.val().reviews)
+                reviews.push(review)
+                console.log(reviews)
+                reviews_json = JSON.stringify(reviews)
+            }
+            else {
+                reviews_json = JSON.stringify([review])
+            }
+            set(ref(db, 'users/' + currentUser.email.replace('.', '')), {
+                reviews: reviews_json
+            })
+        }
+    }
+    async function getReviews() {
+        var reviews = []
+        if(currentUser) {
+            // get(ref(db, 'users/' + currentUser.email.replace('.', '')))
+            //     .then(function (snapshot) {
+            //         reviews = JSON.parse(snapshot.val().reviews)
+            //         console.log('inside func', reviews)
+            //     })
+            //     .catch(function (err) {
+                    
+            //     })
+            var test = await get(ref(db, 'users/' + currentUser.email.replace('.', '')))
+            if (test.val().reviews !== undefined) {
+                reviews = JSON.parse(test.val().reviews)
+            }
+            else {
+                reviews = []
+            }
+        }
+        return reviews
+    }
     // get color data
     function getColor() {
         if (currentUser) {
             get(ref(db, 'users/' + currentUser.email.replace('.', '')))
-                .then(function(snapshot) {
+                .then(function (snapshot) {
                     var color = snapshot.val().color
                     // console.log('color in function ', color, typeof color)
                     setColor(color)
                 })
-                .catch(function(err) {
+                .catch(function (err) {
                     setColor("#232f3e")
                 })
         }
@@ -90,13 +129,15 @@ export function AuthProvider({ children }) {
         signOut,
         changePassword,
         changeColor,
-        getColor
+        getColor,
+        saveReview,
+        getReviews
     }
 
     // Return the context, providing the values that everything should be able to use
     return (
         <AuthContext.Provider value={value}>
-           { !loading && children } 
+            {!loading && children}
         </AuthContext.Provider>
     )
 }

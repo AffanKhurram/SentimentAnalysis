@@ -37,7 +37,7 @@ function binarySearch(ar, el) {
 
 export default function WordProcessing() {
 
-    const { color, getColor } = useAuth()
+    const { color, getColor, saveReview } = useAuth()
     const [score, setScore] = useState(0)
     const [currentText, setCurrentText] = useState("")
     const [currentPositive, setPositive] = useState("")
@@ -89,6 +89,13 @@ export default function WordProcessing() {
         setNegative(negativeWords.join(", "))
         setScore(reviewScore)
         setCurrentText(textRef.current.value)
+        var review_obj = {
+            text: textRef.current.value,
+            positive: positiveWords,
+            negative: negativeWords,
+            score: reviewScore
+        }
+        saveReview(review_obj)
     }
 
     async function reset(e) {
