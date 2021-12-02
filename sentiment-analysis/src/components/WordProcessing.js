@@ -18,6 +18,12 @@ import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import "./Dashboard"
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import feedback_json from "../feedback.json";
+export const great = require('../emojis/great.png')
+export const good = require('../emojis/good.png')
+export const neutral = require('../emojis/neutral.png')
+export const bad = require('../emojis/bad.png')
+export const worst = require('../emojis/worst.png')
+
 
 function binarySearch(ar, el) {
     var m = 0;
@@ -42,6 +48,7 @@ export default function WordProcessing() {
     const [currentText, setCurrentText] = useState("")
     const [currentPositive, setPositive] = useState("")
     const [currentNegative, setNegative] = useState("")
+    const [currentEmoji, setEmoji] = useState(great)
     const textRef = useRef()
     const formRef = useRef()
     const positive = feedback_json['positive']
@@ -150,6 +157,8 @@ export default function WordProcessing() {
                                 {currentPositive} <br /><br />
                                 All negative words: <br />
                                 {currentNegative} <br /><br />
+
+                                <img src={currentEmoji} />
                             </div>
                         </div>
                         <div className="text-center mt-2">
