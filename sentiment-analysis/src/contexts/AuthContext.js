@@ -58,13 +58,16 @@ export function AuthProvider({ children }) {
             var reviews_json;
             var test = await get(ref(db, 'users/' + currentUser.email.replace('.', '')))
             if (test.val()) {
-                var reviews = JSON.parse(test.val().reviews)
-                reviews.push(review)
-                console.log(reviews)
-                reviews_json = JSON.stringify(reviews)
-            }
-            else {
-                reviews_json = JSON.stringify([review])
+                console.log('test')
+                if ('reviews' in test.val()) {
+                    var reviews = JSON.parse(test.val().reviews)
+                    reviews.push(review)
+                    console.log(reviews)
+                    reviews_json = JSON.stringify(reviews)
+                }
+                else {
+                    reviews_json = JSON.stringify([review])
+                }
             }
             set(ref(db, 'users/' + currentUser.email.replace('.', '')), {
                 reviews: reviews_json
@@ -73,22 +76,18 @@ export function AuthProvider({ children }) {
     }
     async function getReviews() {
         var reviews = []
-        if(currentUser) {
-            // get(ref(db, 'users/' + currentUser.email.replace('.', '')))
-            //     .then(function (snapshot) {
-            //         reviews = JSON.parse(snapshot.val().reviews)
-            //         console.log('inside func', reviews)
-            //     })
-            //     .catch(function (err) {
-                    
-            //     })
+        if (currentUser) {
             var test = await get(ref(db, 'users/' + currentUser.email.replace('.', '')))
-            if (test.val().reviews) {
-                reviews = JSON.parse(test.val().reviews)
+            if (test.val()) {
+                if ('reviews' in test.val()) {
+                    reviews = JSON.parse(test.val().reviews)
+                }
+                else {
+                    reviews = []
+                }
+
             }
-            else {
-                reviews = []
-            }
+
         }
         return reviews
     }

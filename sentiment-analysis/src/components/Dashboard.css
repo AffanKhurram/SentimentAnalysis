@@ -60,3 +60,7 @@
     line-height: 74px;
     text-align: center;
 }
+
+.review {
+    white-space: pre-line;
+}
