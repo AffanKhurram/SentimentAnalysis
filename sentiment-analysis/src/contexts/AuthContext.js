@@ -57,7 +57,7 @@ export function AuthProvider({ children }) {
         if (currentUser) {
             var reviews_json;
             var test = await get(ref(db, 'users/' + currentUser.email.replace('.', '')))
-            if (test.val().reviews !== undefined) {
+            if (test.val()) {
                 var reviews = JSON.parse(test.val().reviews)
                 reviews.push(review)
                 console.log(reviews)
@@ -83,7 +83,7 @@ export function AuthProvider({ children }) {
                     
             //     })
             var test = await get(ref(db, 'users/' + currentUser.email.replace('.', '')))
-            if (test.val().reviews !== undefined) {
+            if (test.val().reviews) {
                 reviews = JSON.parse(test.val().reviews)
             }
             else {
